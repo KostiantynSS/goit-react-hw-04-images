@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import css from './modal.module.css';
+import PropTypes from 'prop-types';
 
 const Modal = ({ modalHandler, src, alt }) => {
   useEffect(() => {
@@ -22,5 +23,9 @@ const Modal = ({ modalHandler, src, alt }) => {
     </div>
   );
 };
-
+Modal.propTypes = {
+  modalHandler: PropTypes.func,
+  src: PropTypes.string,
+  alt: PropTypes.string,
+};
 export default Modal;

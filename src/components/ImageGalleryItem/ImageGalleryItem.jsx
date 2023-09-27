@@ -1,26 +1,28 @@
-import { Component } from 'react';
 import css from './imageGalleryItem.module.css';
-
-class ImageGalleryItem extends Component {
-  imgClickHandler = () => {
-    const largePhoto = {
-      src: this.props.largePhoto,
-      alt: this.props.description,
+import PropTypes from 'prop-types';
+const ImageGalleryItem = ({ onClick, description, largePhoto, preview }) => {
+  const imgClickHandler = () => {
+    const needPhoto = {
+      src: largePhoto,
+      alt: description,
     };
-    this.props.onClick(largePhoto);
+    onClick(needPhoto);
   };
 
-  render() {
-    return (
-      <li className={css.ImageGalleryItem} onClick={this.imgClickHandler}>
-        <img
-          className={css.ImageGalleryItemImage}
-          src={this.props.preview}
-          alt={this.props.description}
-        />
-      </li>
-    );
-  }
-}
-
+  return (
+    <li className={css.ImageGalleryItem} onClick={imgClickHandler}>
+      <img
+        className={css.ImageGalleryItemImage}
+        src={preview}
+        alt={description}
+      />
+    </li>
+  );
+};
+ImageGalleryItem.propTypes = {
+  onClick: PropTypes.func,
+  description: PropTypes.string,
+  largePhoto: PropTypes.string,
+  preview: PropTypes.string,
+};
 export default ImageGalleryItem;
